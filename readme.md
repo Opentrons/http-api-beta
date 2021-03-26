@@ -1,6 +1,6 @@
 # Opentrons HTTP Platform API Beta
 
-## Curious to access the early HTTP API?
+### Curious to access the early HTTP API?
 [Use this form to apply for the beta program](https://opentrons-ux.typeform.com/to/WxFIa8vs)
 
 - [Opentrons HTTP Platform API Beta](#opentrons-http-platform-api-beta)
