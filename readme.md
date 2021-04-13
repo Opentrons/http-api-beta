@@ -264,7 +264,7 @@ curl -X POST “http://{*robot_ip_address*}:31950/sessions/{*session_id*}/comman
 
 ### Python
 
-```shell
+```python
 requests.post(
     url=f”http://{robot_ip_address}:31950/sessions/{session_id}/commands/execute”,
     headers={“Opentrons-Version”: “2”},
@@ -339,6 +339,7 @@ requests.delete(
     url=f”http://{robot_ip_address}:31950/protocols/{protocol_id}”,
     headers={“Opentrons-Version”: “2”},
 )
+```
 
 # Complete example program
 
