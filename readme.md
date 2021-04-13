@@ -3,45 +3,6 @@
 > ### Curious to access the early HTTP API?
 > [Use this form to apply for the beta program](https://opentrons-ux.typeform.com/to/WxFIa8vs)
 
-- [Opentrons HTTP Platform API Beta](#opentrons-http-platform-api-beta)
-  * [New Features](#new-features)
-  * [Protocol upload](#protocol-upload)
-  * [Protocol sessions](#protocol-sessions)
-  * [Support files](#support-files)
-  * [Importing user modules in Python protocols](#importing-user-modules-in-python-protocols)
-- [Audience](#audience)
-- [Sharing Feedback](#sharing-feedback)
-- [Setting Up](#setting-up)
-  * [Update your Opentrons App and OT-2](#update-your-opentrons-app-and-ot-2)
-  * [Enable the beta features](#enable-the-beta-features)
-- [Examples](#examples)
-  * [Requirements for these examples](#requirements-for-these-examples)
-  * [Uploading a protocol](#uploading-a-protocol)
-  * [POST the file to OT-2](#post-the-file-to-ot-2)
-  * [Extract the uploaded protocol id from the response](#extract-the-uploaded-protocol-id-from-the-response)
-  * [Uploading a protocol with support files](#uploading-a-protocol-with-support-files)
-  * [Extract the uploaded protocol id from the response](#extract-the-uploaded-protocol-id-from-the-response-1)
-  * [Creating a protocol session](#creating-a-protocol-session)
-  * [Extract the session id from the response](#extract-the-session-id-from-the-response)
-  * [Sending protocol session commands](#sending-protocol-session-commands)
-  * [Run](#run)
-  * [Pause](#pause)
-  * [Resume](#resume)
-  * [Cancel](#cancel)
-  * [Getting protocol session’s status](#getting-protocol-session-s-status)
-  * [Deleting a protocol session](#deleting-a-protocol-session)
-  * [Deleting an uploaded protocol](#deleting-an-uploaded-protocol)
-  * [Protocol](#protocol)
-  * [Configuration File](#configuration-file)
-  * [Python helpers](#python-helpers)
-  * [Replace with actual OT2 address](#replace-with-actual-ot2-address)
-- [Future Plans](#future-plans)
-  * [Analysis upon upload](#analysis-upon-upload)
-  * [Notifications](#notifications)
-  * [Custom Labware](#custom-labware)
-
-
-
 Version 4.0 of the OT-2 robot software introduces a number of features that provide greater flexibility in protocol execution. 
 
 Prior to this version, to run a protocol on the OT-2, you needed to use:
