@@ -127,12 +127,12 @@ Replace _{_**robot_ip_address**_}_ with the IP address of the OT-2 which is foun
 
 ## Uploading a protocol
 
-To upload a protocol file called “my_protocol.py”. The response will contain a unique identifier for the protocol (_protocol_id)._
+To upload a protocol file called "my_protocol.py". The response will contain a unique identifier for the protocol (_protocol_id)._
 
 ### cURL
 
 ```shell
-curl -X POST “http://{*robot_ip_address*}:31950/protocols” -H “Opentrons-Version: 2” -H  “accept: application/json” -H “Content-Type: multipart/form-data” -F “protocolFile=@my_protocol.py”
+curl -X POST "http://{*robot_ip_address*}:31950/protocols" -H "Opentrons-Version: 2" -H  "accept: application/json" -H "Content-Type: multipart/form-data" -F "protocolFile=@my_protocol.py"
 ```
 
 ### Python
@@ -141,9 +141,9 @@ POST the file to OT-2:
 
 ```python
 response = requests.post(
-    url=f”http://{robot_ip_address}:31950/protocols”,
-    files=[(“protocolFile”, open(“my_protocol.py”, ‘rb’))],
-    headers={“Opentrons-Version”: “2”},
+    url=f"http://{robot_ip_address}:31950/protocols",
+    files=[("protocolFile", open("my_protocol.py", ‘rb’))],
+    headers={"Opentrons-Version": "2"},
 )
 ```
 
@@ -155,12 +155,12 @@ protocol_id = response.json()[‘data’][‘id’]
 
 ## Uploading a protocol with support files
 
-Uploading a protocol file called “my_protocol.py” with two data files called “my_data.csv” and “my_data.json”. 
+Uploading a protocol file called "my_protocol.py" with two data files called "my_data.csv" and "my_data.json". 
 
 ### cURL
 
 ```shell
-curl -X POST “http://{*robot_ip_address*}:31950/protocols” -H “Opentrons-Version: 2” -H  “accept: application/json” -H  “Content-Type: multipart/form-data” -F “supportFiles=@my_data.csv” -F “supportFiles=@my_data.json” -F “protocolFile=@my_protocol.py”
+curl -X POST "http://{*robot_ip_address*}:31950/protocols" -H "Opentrons-Version: 2" -H  "accept: application/json" -H  "Content-Type: multipart/form-data" -F "supportFiles=@my_data.csv" -F "supportFiles=@my_data.json" -F "protocolFile=@my_protocol.py"
 ```
 
 ### Python
@@ -169,11 +169,11 @@ POST the files to OT-2:
 
 ```python
 response = requests.post(
-    url=f”http://{robot_ip_address}:31950/protocols”,
-    files=[(“protocolFile”, open(“my_protocol.py”, ‘rb’)),
-           (“supportFiles”, open(“my_data.csv”, ‘rb’)),
-           (“supportFiles”, open(“my_data.json”, ‘rb’))],
-    headers={“Opentrons-Version”: “2”},
+    url=f"http://{robot_ip_address}:31950/protocols",
+    files=[("protocolFile", open("my_protocol.py", ‘rb’)),
+           ("supportFiles", open("my_data.csv", ‘rb’)),
+           ("supportFiles", open("my_data.json", ‘rb’))],
+    headers={"Opentrons-Version": "2"},
 )
 ```
 
@@ -190,23 +190,23 @@ Once a protocol is uploaded, a session must be created to run the protocol. The 
 ### cURL
 
 ```shell
-curl -X POST “http://{*robot_ip_address*}:31950/sessions” -H “Opentrons-Version: 2” -H “accept: application/json” -H “Content-Type: application/json” -d “{\”data\”:{\”sessionType\”:\”protocol\”,\”createParams\”:{\”protocolId\”:\”{*protocol_id*}\”}}}”
+curl -X POST "http://{*robot_ip_address*}:31950/sessions" -H "Opentrons-Version: 2" -H "accept: application/json" -H "Content-Type: application/json" -d "{\"data\":{\"sessionType\":\"protocol\",\"createParams\":{\"protocolId\":\"{*protocol_id*}\"}}}"
 ```
 
 ### Python
 
 ```python
 response = requests.post(
-    url=f”http://{robot_ip_address}:31950/sessions”,
+    url=f"http://{robot_ip_address}:31950/sessions",
     json={
-        “data”: {
-            “sessionType”: “protocol”,
-            “createParams”: {
-                “protocolId”: protocol_id
+        "data": {
+            "sessionType": "protocol",
+            "createParams": {
+                "protocolId": protocol_id
             }
         }
     },
-    headers={“Opentrons-Version”: “2”},
+    headers={"Opentrons-Version": "2"},
 )
 ```
 
@@ -223,16 +223,16 @@ Then, use `session_id` to send commands to the protocol sessions.
 ### cURL
 
 ```shell
-curl -X POST “http://{*robot_ip_address*}:31950/sessions/{*session_id*}/commands/execute” -H “Opentrons-Version: 2” -H “accept: application/json” -H “Content-Type: application/json” -d “{\”data\”:{\”command\”:\”protocol.startRun\”,\”data\”:{}}}”
+curl -X POST "http://{*robot_ip_address*}:31950/sessions/{*session_id*}/commands/execute" -H "Opentrons-Version: 2" -H "accept: application/json" -H "Content-Type: application/json" -d "{\"data\":{\"command\":\"protocol.startRun\",\"data\":{}}}"
 ```
 
 ### Python
 
 ```python
 requests.post(
-    url=f”http://{robot_ip_address}:31950/sessions/{session_id}/commands/execute”,
-    headers={“Opentrons-Version”: “2”},
-    json={“data”: {“command”: “protocol.startRun”, “data”: {}}}
+    url=f"http://{robot_ip_address}:31950/sessions/{session_id}/commands/execute",
+    headers={"Opentrons-Version": "2"},
+    json={"data": {"command": "protocol.startRun", "data": {}}}
 )
 ```
 
@@ -241,16 +241,16 @@ requests.post(
 ### cURL
 
 ```shell
-curl -X POST “http://{*robot_ip_address*}:31950/sessions/{*session_id*}/commands/execute” -H “Opentrons-Version: 2” -H “accept: application/json” -H “Content-Type: application/json” -d “{\”data\”:{\”command\”:\”protocol.pause\”,\”data\”:{}}}”
+curl -X POST "http://{*robot_ip_address*}:31950/sessions/{*session_id*}/commands/execute" -H "Opentrons-Version: 2" -H "accept: application/json" -H "Content-Type: application/json" -d "{\"data\":{\"command\":\"protocol.pause\",\"data\":{}}}"
 ```
 
 ### Python
 
 ```python
 requests.post(
-    url=f”http://{robot_ip_address}:31950/sessions/{session_id}/commands/execute”,
-    headers={“Opentrons-Version”: “2”},
-    json={“data”: {“command”: “protocol.pause”, “data”: {}}}
+    url=f"http://{robot_ip_address}:31950/sessions/{session_id}/commands/execute",
+    headers={"Opentrons-Version": "2"},
+    json={"data": {"command": "protocol.pause", "data": {}}}
 )
 ```
 
@@ -259,16 +259,16 @@ requests.post(
 ### cURL
 
 ```shell
-curl -X POST “http://{*robot_ip_address*}:31950/sessions/{*session_id*}/commands/execute” -H “Opentrons-Version: 2” -H “accept: application/json” -H “Content-Type: application/json” -d “{\”data\”:{\”command\”:\”protocol.resume\”,\”data\”:{}}}”
+curl -X POST "http://{*robot_ip_address*}:31950/sessions/{*session_id*}/commands/execute" -H "Opentrons-Version: 2" -H "accept: application/json" -H "Content-Type: application/json" -d "{\"data\":{\"command\":\"protocol.resume\",\"data\":{}}}"
 ```
 
 ### Python
 
 ```python
 requests.post(
-    url=f”http://{robot_ip_address}:31950/sessions/{session_id}/commands/execute”,
-    headers={“Opentrons-Version”: “2”},
-    json={“data”: {“command”: “protocol.resume”, “data”: {}}}
+    url=f"http://{robot_ip_address}:31950/sessions/{session_id}/commands/execute",
+    headers={"Opentrons-Version": "2"},
+    json={"data": {"command": "protocol.resume", "data": {}}}
 )
 ```
   
@@ -277,16 +277,16 @@ requests.post(
 ### cURL
 
 ```shell
-curl -X POST “http://{*robot_ip_address*}:31950/sessions/{*session_id*}/commands/execute” -H “Opentrons-Version: 2” -H “accept: application/json” -H “Content-Type: application/json” -d “{\”data\”:{\”command\”:\”protocol.cancel\”,\”data\”:{}}}”
+curl -X POST "http://{*robot_ip_address*}:31950/sessions/{*session_id*}/commands/execute" -H "Opentrons-Version: 2" -H "accept: application/json" -H "Content-Type: application/json" -d "{\"data\":{\"command\":\"protocol.cancel\",\"data\":{}}}"
 ```
 
 ### Python
 
 ```python
 requests.post(
-    url=f”http://{robot_ip_address}:31950/sessions/{session_id}/commands/execute”,
-    headers={“Opentrons-Version”: “2”},
-    json={“data”: {“command”: “protocol.cancel”, “data”: {}}}
+    url=f"http://{robot_ip_address}:31950/sessions/{session_id}/commands/execute",
+    headers={"Opentrons-Version": "2"},
+    json={"data": {"command": "protocol.cancel", "data": {}}}
 )
 ```
 
@@ -295,15 +295,15 @@ requests.post(
 ### cURL
 
 ```shell
-curl “http://{*robot_ip_address*}:31950/sessions/{*session_id*}” -H “Opentrons-Version: 2”
+curl "http://{*robot_ip_address*}:31950/sessions/{*session_id*}" -H "Opentrons-Version: 2"
 ```
 
 ### Python
 
 ```python
 response = requests.get(
-    url=f”http://{robot_ip_address}:31950/sessions/{session_id}”,
-    headers={“Opentrons-Version”: “2”},
+    url=f"http://{robot_ip_address}:31950/sessions/{session_id}",
+    headers={"Opentrons-Version": "2"},
 )
 ```
 
@@ -312,15 +312,15 @@ response = requests.get(
 ### cURL
 
 ```shell
-curl -X DELETE “http://{*robot_ip_address*}:31950/sessions/{*session_id*}” -H “Opentrons-Version: 2”
+curl -X DELETE "http://{*robot_ip_address*}:31950/sessions/{*session_id*}" -H "Opentrons-Version: 2"
 ```
 
 ### Python
 
 ```python
 requests.delete(
-    url=f”http://{robot_ip_address}:31950/sessions/{session_id}”,
-    headers={“Opentrons-Version”: “2”},
+    url=f"http://{robot_ip_address}:31950/sessions/{session_id}",
+    headers={"Opentrons-Version": "2"},
 )
 ```
 
@@ -329,15 +329,15 @@ requests.delete(
 ### cURL
 
 ```shell
-curl -X DELETE “http://{*robot_ip_address*}:31950/protocols/{*protocol_id*}” -H “Opentrons-Version: 2”
+curl -X DELETE "http://{*robot_ip_address*}:31950/protocols/{*protocol_id*}" -H "Opentrons-Version: 2"
 ```
 
 ### Python
 
 ```python
 requests.delete(
-    url=f”http://{robot_ip_address}:31950/protocols/{protocol_id}”,
-    headers={“Opentrons-Version”: “2”},
+    url=f"http://{robot_ip_address}:31950/protocols/{protocol_id}",
+    headers={"Opentrons-Version": "2"},
 )
 ```
 
@@ -347,7 +347,7 @@ This example uses the [basic transfer](https://docs.opentrons.com/v2/new_example
 
 ## Protocol
 
-Create a file called “basic_transfer.py” containing this data:
+Create a file called "basic_transfer.py" containing this data:
 
 ```python
 from opentrons import protocol_api
@@ -357,7 +357,7 @@ metadata = {‘apiLevel’: ‘2.6’}
 
 
 def run(protocol: protocol_api.ProtocolContext):
-    configuration = load_config(“basic_transfer_config.json”)
+    configuration = load_config("basic_transfer_config.json")
 
     plate = protocol.load_labware(configuration[‘plate’], 1)
     tiprack_1 = protocol.load_labware(configuration[‘tiprack’], 2)
@@ -375,41 +375,41 @@ def run(protocol: protocol_api.ProtocolContext):
 
 ## Configuration File
 
-Create a file called “basic_transfer_config.json” containing
+Create a file called "basic_transfer_config.json" containing
 
 ```json
 {
-  “plate”: “corning_96_wellplate_360ul_flat”,
-  “tiprack”: “opentrons_96_tiprack_300ul”,
-  “instrument”: {
-    “model”: “p300_single”,
-    “mount”: “right”
+  "plate": "corning_96_wellplate_360ul_flat",
+  "tiprack": "opentrons_96_tiprack_300ul",
+  "instrument": {
+    "model": "p300_single",
+    "mount": "right"
   },
-  “transfers”: [
+  "transfers": [
     {
-      “source_well”: “A1”,
-      “target_well”: “B1”,
-      “ml”: 100
+      "source_well": "A1",
+      "target_well": "B1",
+      "ml": 100
     }]
 }
 ```
 
 ## Python helpers
 
-Create a file called “helpers.py” containing this code.
+Create a file called "helpers.py" containing this code.
 
 ```python
 import contextlib
 import json
 
 def load_config(name: str):
-    “””Load a configuration file”””
+    """Load a configuration file"""
 with open(name, ‘rb’) as f:
         return json.load(f)
 
 @contextlib.contextmanager
 def pick_up_then_drop(instrument):
-    “””Pick up then automatically drop the tip in a context manager”””
+    """Pick up then automatically drop the tip in a context manager"""
     instrument.pick_up_tip()
     yield
     instrument.drop_tip()
@@ -425,20 +425,20 @@ import time
 
 
 # Replace with actual OT2 address
-ROBOT_IP_ADDRESS = “127.0.0.1”
+ROBOT_IP_ADDRESS = "127.0.0.1"
 
 
 def run():
     # POST the protocol and support files to OT2
     response = requests.post(
-        url=f”http://{ROBOT_IP_ADDRESS}:31950/protocols”,
-        headers={“Opentrons-Version”: “2”},
-        files=[(“protocolFile”, open(“basic_transfer.py”, ‘rb’)),
-               (“supportFiles”, open(“helpers.py”, ‘rb’)),
-               (“supportFiles”, open(“basic_transfer_config.json”, ‘rb’)),
+        url=f"http://{ROBOT_IP_ADDRESS}:31950/protocols",
+        headers={"Opentrons-Version": "2"},
+        files=[("protocolFile", open("basic_transfer.py", ‘rb’)),
+               ("supportFiles", open("helpers.py", ‘rb’)),
+               ("supportFiles", open("basic_transfer_config.json", ‘rb’)),
                ]
     )
-    print(f”Create Protocol result: {response.json()}”)
+    print(f"Create Protocol result: {response.json()}")
 
     # Extract the uploaded protocol id from the response
     protocol_id = response.json()[‘data’][‘id’]
@@ -446,33 +446,33 @@ def run():
     try:
         errors = response.json()[‘data’].get(‘errors’)
         if errors:
-            raise RuntimeError(f”Errors in protocol: {errors}”)
+            raise RuntimeError(f"Errors in protocol: {errors}")
 
         run_protocol(protocol_id)
 
     finally:
         # Use the protocol_id to DELETE the protocol
         requests.delete(
-            url=f”http://{ROBOT_IP_ADDRESS}:31950/protocols/{protocol_id}”,
-            headers={“Opentrons-Version”: “2”},
+            url=f"http://{ROBOT_IP_ADDRESS}:31950/protocols/{protocol_id}",
+            headers={"Opentrons-Version": "2"},
         )
 
 
 def run_protocol(protocol_id: str):
     # Create a protocol session
     response = requests.post(
-        url=f”http://{ROBOT_IP_ADDRESS}:31950/sessions”,
-        headers={“Opentrons-Version”: “2”},
+        url=f"http://{ROBOT_IP_ADDRESS}:31950/sessions",
+        headers={"Opentrons-Version": "2"},
         json={
-            “data”: {
-                “sessionType”: “protocol”,
-                “createParams”: {
-                    “protocolId”: protocol_id
+            "data": {
+                "sessionType": "protocol",
+                "createParams": {
+                    "protocolId": protocol_id
                 }
             }
         }
     )
-    print(f”Create Session result: {response.json()}”)
+    print(f"Create Session result: {response.json()}")
     # Extract the session id from the response
     session_id = response.json()[‘data’][‘id’]
 
@@ -484,21 +484,21 @@ def run_protocol(protocol_id: str):
             time.sleep(.5)
 
             response = requests.get(
-                url=f”http://{ROBOT_IP_ADDRESS}:31950/sessions/{session_id}”,
-                headers={“Opentrons-Version”: “2”},
+                url=f"http://{ROBOT_IP_ADDRESS}:31950/sessions/{session_id}",
+                headers={"Opentrons-Version": "2"},
             )
 
             current_state = response.json()[‘data’][‘details’][‘currentState’]
             if current_state == ‘loaded’:
                 break
             elif current_state == ‘error’:
-                raise RuntimeError(f”Error encountered {response.json()}”)
+                raise RuntimeError(f"Error encountered {response.json()}")
 
         # Send a command to begin a protocol run
         requests.post(
-            url=f”http://{ROBOT_IP_ADDRESS}:31950/sessions/{session_id}/commands/execute”,
-            headers={“Opentrons-Version”: “2”},
-            json={“data”: {“command”: “protocol.startRun”, “data”: {}}}
+            url=f"http://{ROBOT_IP_ADDRESS}:31950/sessions/{session_id}/commands/execute",
+            headers={"Opentrons-Version": "2"},
+            json={"data": {"command": "protocol.startRun", "data": {}}}
         )
 
         # Wait until session is in the ‘finished’ state
@@ -507,23 +507,23 @@ def run_protocol(protocol_id: str):
             time.sleep(.5)
 
             response = requests.get(
-                url=f”http://{ROBOT_IP_ADDRESS}:31950/sessions/{session_id}”,
-                headers={“Opentrons-Version”: “2”},
+                url=f"http://{ROBOT_IP_ADDRESS}:31950/sessions/{session_id}",
+                headers={"Opentrons-Version": "2"},
             )
 
             current_state = response.json()[‘data’][‘details’][‘currentState’]
             if current_state == ‘finished’:
-                print(“Run is complete:”)
+                print("Run is complete:")
                 print(response.json())
                 break
             elif current_state == ‘error’:
-                raise RuntimeError(f”Error encountered {response.json()}”)
+                raise RuntimeError(f"Error encountered {response.json()}")
 
     finally:
         # Use the session_id to DELETE the session
         requests.delete(
-            url=f”http://{ROBOT_IP_ADDRESS}:31950/sessions/{session_id}”,
-            headers={“Opentrons-Version”: “2”},
+            url=f"http://{ROBOT_IP_ADDRESS}:31950/sessions/{session_id}",
+            headers={"Opentrons-Version": "2"},
         )
 
 
