@@ -376,7 +376,7 @@ def pick_up_then_drop(instrument):
     instrument.drop_tip()
 ```
 
-# Python Run Script
+## Python Run Script
 
 This script will upload the basic_transfer protocol along with the configuration and helper python module. It will then create protocol session and run the protocol. It will print out the final status of the protocol session when the run is completed. Finally, it will delete the session and the protocol.
 
