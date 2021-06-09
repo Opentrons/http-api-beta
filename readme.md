@@ -43,11 +43,17 @@ We assume that you’re either already familiar with these things, or you can fi
 
 If you’re not already familiar with these things, let us know. We won’t be able to provide detailed support, but we might be able to point you to some learning resources.
 
+# Getting Help
+
+For beta-related help, post on the [beta forum](https://community.opentrons.com/c/beta/http/6).
+
+For non-beta-related help, [contact Opentrons Support](https://opentrons.com/contact-support/) or visit our [Help Center](http://support.opentrons.com/).
+
 # Sharing Feedback
 
-Share feedback by emailing  [beta@opentrons.com](applewebdata://2A956D69-64A2-432B-880B-381DED88BF33/beta@opentrons.com) .
+Share feedback by emailing beta@opentrons.com or posting on the [beta forum](https://community.opentrons.com/c/beta/http/6).
 
-If you have any thoughts on the current API, or our  [future plans](https://coda.io/d/Opentrons-HTTP-Platform-API-Beta_di2AUgtv1iy/Future-plans_suIju)  for it, please share them! **We need your help to make this API great. ❤️**
+If you have any thoughts on the current API, or our [future plans](#future-plans) for it, please share them! **We need your help to make this API great. ❤️**
 
 We’d love to hear about:
 * Bugs that you run into.
