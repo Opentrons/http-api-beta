@@ -8,8 +8,8 @@ Version 4.0 of the OT-2 robot software introduces a number of features that prov
 Prior to this version, to run a protocol on the OT-2, you needed to use:
 
 * The Opentrons App GUI.
-* The opentrons-execute tool on the OT-2’s command line.
-* The OT-2’s Jupyter Notebook.
+* The opentrons-execute tool on the OT-2's command line.
+* The OT-2's Jupyter Notebook.
 
 Now, you can additionally upload, run, and interact with protocols entirely through a documented RESTful HTTP API.
 
@@ -19,7 +19,7 @@ Please note: These features are in beta stage and therefore details might change
 
 ## Protocol upload
 
-Python and JSON protocols can be uploaded to the OT-2 using an HTTP API. Protocol files will reside on the OT-2’s file system until deleted or the OT-2 is turned off.
+Python and JSON protocols can be uploaded to the OT-2 using an HTTP API. Protocol files will reside on the OT-2's file system until deleted or the OT-2 is turned off.
 
 ## Protocol sessions
 
@@ -36,12 +36,12 @@ A python file uploaded as a support file can be imported in a Python protocol. T
 
 # Audience
 
-We assume that you’re either already familiar with these things, or you can figure them out on your own.
+We assume that you're either already familiar with these things, or you can figure them out on your own.
 
 * How HTTP and JSON APIs generally work.
 * How to use your chosen programming language, libraries, and tools (like  [Postman](https://www.postman.com/)  or  [cURL](https://en.wikipedia.org/wiki/CURL) ) to interact with HTTP and JSON APIs.
 
-If you’re not already familiar with these things, let us know. We won’t be able to provide detailed support, but we might be able to point you to some learning resources.
+If you're not already familiar with these things, let us know. We won't be able to provide detailed support, but we might be able to point you to some learning resources.
 
 # Getting Help
 
@@ -55,7 +55,7 @@ Share feedback by emailing beta@opentrons.com or posting on the [beta forum](htt
 
 If you have any thoughts on the current API, or our [future plans](#future-plans) for it, please share them! **We need your help to make this API great. ❤️**
 
-We’d love to hear about:
+We'd love to hear about:
 * Bugs that you run into.
 * Features that seem missing.
 * Parts of the API that you found confusing, hard to use, or inconvenient.
@@ -74,13 +74,13 @@ You can check what the latest version is at  [https://github.com/Opentrons/opent
 
 ## Enable the beta features
 
-Since these features are experimental, they’re disabled by default. Here’s how to enable them:
+Since these features are experimental, they're disabled by default. Here's how to enable them:
 
-1. From the **Robot** tab, go to your OT-2’s page.
+1. From the **Robot** tab, go to your OT-2's page.
 2. Scroll down to the **Advanced Settings**section.
 3. Turn on **Enable Experimental HTTP Protocol Sessions**.
 
-**Note:** While these beta features are enabled, you won’t be able to upload protocols the normal way, through the Opentrons App.
+**Note:** While these beta features are enabled, you won't be able to upload protocols the normal way, through the Opentrons App.
 
 To restore the ability to upload protocols through the Opentrons App, turn off **Enable Experimental HTTP Protocol Sessions.** Feel free to toggle the setting whenever you need to.
 
@@ -90,7 +90,7 @@ To restore the ability to upload protocols through the Opentrons App, turn off *
 
 The software requirement for the examples is cURL or Python 3.7 with  [requests](https://requests.readthedocs.io/en/master/)  package. 
 
-Replace _{_**robot_ip_address**_}_ with the IP address of the OT-2 which is found in the Opentrons application’s **Connectivity** section. 
+Replace _{_**robot_ip_address**_}_ with the IP address of the OT-2 which is found in the Opentrons application's **Connectivity** section.
 
 ## Uploading a protocol
 
@@ -109,7 +109,7 @@ POST the file to OT-2:
 ```python
 response = requests.post(
     url=f"http://{robot_ip_address}:31950/protocols",
-    files=[("protocolFile", open("my_protocol.py", ‘rb’))],
+    files=[("protocolFile", open("my_protocol.py", 'rb'))],
     headers={"Opentrons-Version": "2"},
 )
 ```
@@ -117,7 +117,7 @@ response = requests.post(
 Extract the uploaded protocol id from the response:
 
 ```python
-protocol_id = response.json()[‘data’][‘id’]
+protocol_id = response.json()['data']['id']
 ```
 
 ## Uploading a protocol with support files
@@ -137,9 +137,9 @@ POST the files to OT-2:
 ```python
 response = requests.post(
     url=f"http://{robot_ip_address}:31950/protocols",
-    files=[("protocolFile", open("my_protocol.py", ‘rb’)),
-           ("supportFiles", open("my_data.csv", ‘rb’)),
-           ("supportFiles", open("my_data.json", ‘rb’))],
+    files=[("protocolFile", open("my_protocol.py", 'rb')),
+           ("supportFiles", open("my_data.csv", 'rb')),
+           ("supportFiles", open("my_data.json", 'rb'))],
     headers={"Opentrons-Version": "2"},
 )
 ```
@@ -147,7 +147,7 @@ response = requests.post(
 Extract the uploaded protocol id from the response:
 
 ```python
-protocol_id = response.json()[‘data’][‘id’]
+protocol_id = response.json()['data']['id']
 ```
 
 ## Creating a protocol session
@@ -180,7 +180,7 @@ response = requests.post(
 Extract the session id from the response:
 
 ```python
-session_id = response.json()[‘data’][‘id’]
+session_id = response.json()['data']['id']
 ```
 
 Then, use `session_id` to send commands to the protocol sessions.
@@ -257,7 +257,7 @@ requests.post(
 )
 ```
 
-## Getting protocol session’s status
+## Getting protocol session's status
 
 ### cURL
 
@@ -320,24 +320,24 @@ Create a file called "basic_transfer.py" containing this data:
 from opentrons import protocol_api
 from helpers import load_config, pick_up_then_drop
 
-metadata = {‘apiLevel’: ‘2.6’}
+metadata = {'apiLevel': '2.6'}
 
 
 def run(protocol: protocol_api.ProtocolContext):
     configuration = load_config("basic_transfer_config.json")
 
-    plate = protocol.load_labware(configuration[‘plate’], 1)
-    tiprack_1 = protocol.load_labware(configuration[‘tiprack’], 2)
-    instrument = protocol.load_instrument(configuration[‘instrument’][‘model’],
-                                          configuration[‘instrument’][‘mount’],
+    plate = protocol.load_labware(configuration['plate'], 1)
+    tiprack_1 = protocol.load_labware(configuration['tiprack'], 2)
+    instrument = protocol.load_instrument(configuration['instrument']['model'],
+                                          configuration['instrument']['mount'],
                                           tip_racks=[tiprack_1])
 
-    transfers = configuration[‘transfers’]
+    transfers = configuration['transfers']
     for transfer in transfers:
         with pick_up_then_drop(instrument):
-            ml = transfer[‘ml’]
-            instrument.aspirate(ml, plate[transfer[‘source_well’]])
-            instrument.dispense(ml, plate[transfer[‘target_well’]])
+            ml = transfer['ml']
+            instrument.aspirate(ml, plate[transfer['source_well']])
+            instrument.dispense(ml, plate[transfer['target_well']])
 ```
 
 ## Configuration File
@@ -371,7 +371,7 @@ import json
 
 def load_config(name: str):
     """Load a configuration file"""
-with open(name, ‘rb’) as f:
+with open(name, 'rb') as f:
         return json.load(f)
 
 @contextlib.contextmanager
@@ -400,18 +400,18 @@ def run():
     response = requests.post(
         url=f"http://{ROBOT_IP_ADDRESS}:31950/protocols",
         headers={"Opentrons-Version": "2"},
-        files=[("protocolFile", open("basic_transfer.py", ‘rb’)),
-               ("supportFiles", open("helpers.py", ‘rb’)),
-               ("supportFiles", open("basic_transfer_config.json", ‘rb’)),
+        files=[("protocolFile", open("basic_transfer.py", 'rb')),
+               ("supportFiles", open("helpers.py", 'rb')),
+               ("supportFiles", open("basic_transfer_config.json", 'rb')),
                ]
     )
     print(f"Create Protocol result: {response.json()}")
 
     # Extract the uploaded protocol id from the response
-    protocol_id = response.json()[‘data’][‘id’]
+    protocol_id = response.json()['data']['id']
 
     try:
-        errors = response.json()[‘data’].get(‘errors’)
+        errors = response.json()['data'].get('errors')
         if errors:
             raise RuntimeError(f"Errors in protocol: {errors}")
 
@@ -441,11 +441,11 @@ def run_protocol(protocol_id: str):
     )
     print(f"Create Session result: {response.json()}")
     # Extract the session id from the response
-    session_id = response.json()[‘data’][‘id’]
+    session_id = response.json()['data']['id']
 
     try:
         # Creating the protocol session kicks off a full simulation which can
-        # take some time. Wait until session is in the ‘loaded’ state before running
+        # take some time. Wait until session is in the 'loaded' state before running
         while True:
             # Sleep for 1/2 a second
             time.sleep(.5)
@@ -455,10 +455,10 @@ def run_protocol(protocol_id: str):
                 headers={"Opentrons-Version": "2"},
             )
 
-            current_state = response.json()[‘data’][‘details’][‘currentState’]
-            if current_state == ‘loaded’:
+            current_state = response.json()['data']['details']['currentState']
+            if current_state == 'loaded':
                 break
-            elif current_state == ‘error’:
+            elif current_state == 'error':
                 raise RuntimeError(f"Error encountered {response.json()}")
 
         # Send a command to begin a protocol run
@@ -468,7 +468,7 @@ def run_protocol(protocol_id: str):
             json={"data": {"command": "protocol.startRun", "data": {}}}
         )
 
-        # Wait until session is in the ‘finished’ state
+        # Wait until session is in the 'finished' state
         while True:
             # Sleep for 1/2 a second
             time.sleep(.5)
@@ -478,12 +478,12 @@ def run_protocol(protocol_id: str):
                 headers={"Opentrons-Version": "2"},
             )
 
-            current_state = response.json()[‘data’][‘details’][‘currentState’]
-            if current_state == ‘finished’:
+            current_state = response.json()['data']['details']['currentState']
+            if current_state == 'finished':
                 print("Run is complete:")
                 print(response.json())
                 break
-            elif current_state == ‘error’:
+            elif current_state == 'error':
                 raise RuntimeError(f"Error encountered {response.json()}")
 
     finally:
@@ -494,7 +494,7 @@ def run_protocol(protocol_id: str):
         )
 
 
-if __name__ == ‘__main__’:
+if __name__ == '__main__':
     run()
 ```
 
