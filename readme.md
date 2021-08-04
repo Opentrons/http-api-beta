@@ -1,7 +1,4 @@
-# Opentrons HTTP Platform API Beta
-
-> ### Curious to access the early HTTP API?
-> [Use this form to apply for the beta program](https://opentrons-ux.typeform.com/to/WxFIa8vs)
+# Opentrons Experimental HTTP Sessions API
 
 Version 4.0 of the OT-2 robot software introduces a number of features that provide greater flexibility in protocol execution. 
 
@@ -13,7 +10,7 @@ Prior to this version, to run a protocol on the OT-2, you needed to use:
 
 Now, you can additionally upload, run, and interact with protocols entirely through a documented RESTful HTTP API.
 
-Please note: These features are in beta stage and therefore details might change. 
+Please note: These features are in experimental stage and therefore details might change. We'll keep users up to date on this page.
 
 # New Features
 
@@ -45,13 +42,13 @@ If you're not already familiar with these things, let us know. We won't be able 
 
 # Getting Help
 
-For beta-related help, post on the [beta forum](https://community.opentrons.com/c/beta/http/6).
+Because these endpoints are experimental, Opentrons does not yet offer official support for them. We will be providing more official support channels as the API matures.
 
-For non-beta-related help, [contact Opentrons Support](https://opentrons.com/contact-support/) or visit our [Help Center](http://support.opentrons.com/).
+Of course, for non-beta-related help, [contact Opentrons Support](https://opentrons.com/contact-support/) or visit our [Help Center](http://support.opentrons.com/).
 
 # Sharing Feedback
 
-Share feedback by emailing beta@opentrons.com or posting on the [beta forum](https://community.opentrons.com/c/beta/http/6).
+Share feedback by emailing beta@opentrons.com.
 
 If you have any thoughts on the current API, or our [future plans](#future-plans) for it, please share them! **We need your help to make this API great. ❤️**
 
@@ -72,7 +69,7 @@ Perform the update  [as normal](https://support.opentrons.com/en/articles/179530
 
 You can check what the latest version is at  [https://github.com/Opentrons/opentrons/releases/latest](https://github.com/Opentrons/opentrons/releases/latest) .
 
-## Enable the beta features
+## Enable the experimental features
 
 Since these features are experimental, they're disabled by default. Here's how to enable them:
 
@@ -80,7 +77,7 @@ Since these features are experimental, they're disabled by default. Here's how t
 2. Scroll down to the **Advanced Settings**section.
 3. Turn on **Enable Experimental HTTP Protocol Sessions**.
 
-**Note:** While these beta features are enabled, you won't be able to upload protocols the normal way, through the Opentrons App.
+**Note:** While these experimental features are enabled, you won't be able to upload protocols the normal way, through the Opentrons App.
 
 To restore the ability to upload protocols through the Opentrons App, turn off **Enable Experimental HTTP Protocol Sessions.** Feel free to toggle the setting whenever you need to.
 
