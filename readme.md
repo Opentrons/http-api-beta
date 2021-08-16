@@ -10,7 +10,7 @@ Prior to this version, to run a protocol on the OT-2, you needed to use:
 
 Now, you can additionally upload, run, and interact with protocols entirely through a documented RESTful HTTP API.
 
-Please note: These features are in experimental stage and therefore details might change. We'll keep users up to date on this page.
+Please note: These features are in experimental stage and therefore details might change. We'll keep users up to date on this page. Until we officially release endpoints, they are subject to change at any time. Additionally, we will not be providing support for these endpoints until they are officially released and documented on the Opentrons website.
 
 # New Features
 
