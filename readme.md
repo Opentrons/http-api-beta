@@ -74,7 +74,7 @@ You can check what the latest version is at  [https://github.com/Opentrons/opent
 Since these features are experimental, they're disabled by default. Here's how to enable them:
 
 1. From the **Robot** tab, go to your OT-2's page.
-2. Scroll down to the **Advanced Settings**section.
+2. Scroll down to the **Advanced Settings **section.
 3. Turn on **Enable Experimental HTTP Protocol Sessions**.
 
 **Note:** While these experimental features are enabled, you won't be able to upload protocols the normal way, through the Opentrons App.
