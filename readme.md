@@ -1,5 +1,7 @@
 # Opentrons Experimental HTTP Sessions API
 
+* Note that support for this experimental API will be ended with the upcoming 5.0 release of the robot software. At that time, the endpoints documented below will no longer work.*
+
 Version 4.0 of the OT-2 robot software introduces a number of features that provide greater flexibility in protocol execution. 
 
 Prior to this version, to run a protocol on the OT-2, you needed to use:
